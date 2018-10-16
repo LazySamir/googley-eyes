@@ -2,6 +2,9 @@
   "name": "googley-eyes",
   "version": "1.0.0",
   "description": "Chrome extension for web-use tracking",
+  "engines": {
+    "node": "10.10.0"
+  },
   "main": "index.js",
   "scripts": {
     "test": "istanbul cover ./node_modules/.bin/jasmine",
