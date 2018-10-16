@@ -4,7 +4,8 @@
   "description": "Chrome extension for web-use tracking",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul cover ./node_modules/.bin/jasmine"
+    "test": "istanbul cover ./node_modules/.bin/jasmine",
+    "test-feature": "node node_modules/webdriverio/bin/wdio ./spec/features/config/jasmine.conf.js"
   },
   "repository": {
     "type": "git",
@@ -22,8 +23,17 @@
   },
   "homepage": "https://github.com/LazySamir/googley-eyes#readme",
   "devDependencies": {
+    "babel-register": "^6.26.0",
     "eslint": "^5.7.0",
     "istanbul": "^0.4.5",
-    "jasmine": "^3.2.0"
+    "jasmine": "^3.2.0",
+    "selenium-standalone": "^6.15.3",
+    "wdio-allure-reporter": "^0.8.2",
+    "wdio-jasmine-framework": "^0.3.6",
+    "wdio-json-reporter": "^0.3.1",
+    "wdio-junit-reporter": "^0.4.4",
+    "wdio-selenium-standalone-service": "0.0.10",
+    "wdio-spec-reporter": "^0.1.5",
+    "webdriverio": "^4.13.2"
   }
 }
