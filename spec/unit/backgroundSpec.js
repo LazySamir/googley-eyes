@@ -12,7 +12,7 @@ const chrome = {
 
 const context = { chrome: chrome };
 const code = fs.readFileSync('./app/background.js');
-const getUrl;
+
 
 describe("Background JS", function() {
 
@@ -21,7 +21,7 @@ describe("Background JS", function() {
     it("creates an addListener() for chrome.tabs.onActivated", function() {
       spyOn(chrome.tabs.onActivated, 'addListener');
       vm.runInNewContext(code, context);
-      expect(chrome.tabs.onActivated.addListener).toHaveBeenCalledWith(getUrl);
+      expect(chrome.tabs.onActivated.addListener).toHaveBeenCalled();
     });
 
   });
