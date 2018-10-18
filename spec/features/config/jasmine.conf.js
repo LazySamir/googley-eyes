@@ -76,6 +76,7 @@ exports.config = {
     // =====
     // Hooks
     // =====
+    /**
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */

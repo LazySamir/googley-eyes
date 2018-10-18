@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "test": "istanbul cover ./node_modules/.bin/jasmine",
-    "test-feature": "node node_modules/webdriverio/bin/wdio ./spec/features/config/jasmine.conf.js"
+    "test-features": "node node_modules/webdriverio/bin/wdio ./spec/features/config/jasmine.conf.js"
   },
   "repository": {
     "type": "git",
