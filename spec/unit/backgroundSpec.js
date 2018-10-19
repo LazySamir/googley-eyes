@@ -2,13 +2,7 @@
 
 const vm = require('vm');
 const fs = require('fs');
-const chrome = {
-                tabs: {
-                  onActivated: {
-                    addListener: function(value) {}
-                  }
-                }
-               };
+const chrome = require("sinon-chrome")
 
 const context = { chrome: chrome };
 const code = fs.readFileSync('./app/background.js');
