@@ -4,18 +4,17 @@
   "description": "Web usage app",
   "manifest_version": 2,
   "browser_action": {
+    "default_icon": {
+      "32": "images/eyes32.png",
+      "64": "images/eyes64.png",
+      "128": "images/eyes128.png"
+    }
   },
-  "content_security_policy": "script-src 'self' ''",
   "permissions": [
     "tabs"
   ],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
-  },
-  "page_action": {
-    "default_icon": {
-      "32": "images/eyes32.png"
-    }
   }
 }
