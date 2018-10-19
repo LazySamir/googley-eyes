@@ -1,15 +1,17 @@
 // Need to read from localStorage - expect the output to be JSON key value pairs
 
 "use strict";
-var IC = require('../../app/indexController');
-var IM = require('../../app/indexModel');
-var IV = require('../../app/indexView');
 
-var model = new IM.IndexModel()
-var view = new IV.IndexView()
-var controller = new IC.IndexController(model, view)
+const IC = require('../../app/indexController');
+const IM = require('../../app/indexModel');
+const IV = require('../../app/indexView');
+
+const model = { queryLocalStorage: function(){} };
+const view = { getHTML: function(){} };
+const controller = new IC.IndexController(model, view)
 
 describe("IndexController", function() {
+
   it(".retrieveURLs invokes .queryLocalStorage", function() {
     spyOn(model, "queryLocalStorage");
     controller.retrieveURLs();
@@ -19,7 +21,7 @@ describe("IndexController", function() {
   it(".injectHTML invokes .getHTML", function() {
     spyOn(view, "getHTML");
     controller.URLs = {}
-    var url_container = "<div></div>"
+    let url_container = "<div></div>"
     controller.injectHTML(url_container);
     expect(view.getHTML).toHaveBeenCalledWith({});
   });
