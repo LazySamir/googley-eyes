@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Googley Eyes</title>
+  </head>
+  <body>
+    <h1>Googley Eyes</h1>
+    <div class="url_container">
+      <ul>
+        <li></li>
+      </ul>
+    </div>
+    <script src="./indexController.js"></script>
+    <script src="./indexModel.js"></script>
+    <script src="./indexView.js"></script>
+    <script type="text/javascript">
+      var controller = new indexController();
+      controller.retrieveURLs();
+      controller.injectHTML();
+    </script>
+  </body>
+</html>

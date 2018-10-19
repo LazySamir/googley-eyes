@@ -30,6 +30,7 @@
     "eslint": "^5.7.0",
     "istanbul": "^0.4.5",
     "jasmine": "^3.2.0",
+    "jasmine-console-reporter": "^3.1.0",
     "selenium-standalone": "^6.15.3",
     "wdio-allure-reporter": "^0.8.2",
     "wdio-jasmine-framework": "^0.3.6",
