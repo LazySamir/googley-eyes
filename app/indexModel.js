@@ -1,9 +1,12 @@
 (function(exports) {
-  function IndexModel() {
+  function IndexModel(browser = chrome) {
+    this.browser = browser
+    this.data
   }
   IndexModel.prototype.queryLocalStorage = function() {
-
-    return [{'url': "www.bbc.co.uk", 'duration': 10000}]
+    this.browser.storage.sync.get(null, function(data) {
+      this.data = data
+    })
   }
 
   exports.IndexModel = IndexModel
