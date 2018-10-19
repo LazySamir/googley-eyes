@@ -9,7 +9,7 @@ const controller = new IC.IndexController(model, view)
 
 describe("IndexController", function() {
 
-  describe(".retrieveURLs", function() {
+  describe(".retrieveURLs()", function() {
 
     it("invokes .queryLocalStorage() on indexModel", function() {
       spyOn(model, "queryLocalStorage");
