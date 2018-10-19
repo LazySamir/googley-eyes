@@ -13,7 +13,6 @@ const chrome = {
 const context = { chrome: chrome };
 const code = fs.readFileSync('./app/background.js');
 
-
 describe("Background JS", function() {
 
   describe("defines our event listeners", function() {
