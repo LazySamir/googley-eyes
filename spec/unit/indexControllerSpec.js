@@ -3,27 +3,37 @@
 "use strict";
 
 const IC = require('../../app/indexController');
-const IM = require('../../app/indexModel');
-const IV = require('../../app/indexView');
-
-const model = { queryLocalStorage: function(){} };
+const model = { queryLocalStorage: function(){ return "urls" } };
 const view = { getHTML: function(){} };
 const controller = new IC.IndexController(model, view)
 
 describe("IndexController", function() {
 
-  it(".retrieveURLs invokes .queryLocalStorage", function() {
-    spyOn(model, "queryLocalStorage");
-    controller.retrieveURLs();
-    expect(model.queryLocalStorage).toHaveBeenCalled();
+  describe(".retrieveURLs", function() {
+
+    it("invokes .queryLocalStorage() on indexModel", function() {
+      spyOn(model, "queryLocalStorage");
+      controller.retrieveURLs();
+      expect(model.queryLocalStorage).toHaveBeenCalled();
+    });
+
+    it("assigns the result to this.URLs", function() {
+      controller.retrieveURLs();
+      expect(controller.URLs).toEqual("urls");
+    });
+
   });
 
-  it(".injectHTML invokes .getHTML", function() {
-    spyOn(view, "getHTML");
-    controller.URLs = {}
-    let url_container = "<div></div>"
-    controller.injectHTML(url_container);
-    expect(view.getHTML).toHaveBeenCalledWith({});
+  describe(".injectHTML()", function() {
+
+    it("invokes .getHTML() on indexView", function() {
+      spyOn(view, "getHTML");
+      controller.URLs = "urls"
+      let url_container = "<div></div>"
+      controller.injectHTML(url_container);
+      expect(view.getHTML).toHaveBeenCalledWith("urls");
+    });
+
   });
 
 });
