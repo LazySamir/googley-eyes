@@ -6,18 +6,10 @@
   </head>
   <body>
     <h1>Googley Eyes</h1>
-    <div class="url_container">
-      <ul>
-        <li></li>
-      </ul>
-    </div>
+    <div id="url_container"></div>
     <script src="./indexController.js"></script>
     <script src="./indexModel.js"></script>
     <script src="./indexView.js"></script>
-    <script type="text/javascript">
-      var controller = new indexController();
-      controller.retrieveURLs();
-      controller.injectHTML();
-    </script>
+    <script src="./injectHTML.js"></script>
   </body>
 </html>
