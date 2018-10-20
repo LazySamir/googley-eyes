@@ -6,9 +6,9 @@ const chrome = require("sinon-chrome")
 const context = { chrome: chrome };
 const code = fs.readFileSync('./app/background.js');
 
-describe("Background JS", function() {
+describe("background.js", function() {
 
-  describe("defines event listeners", function() {
+  describe("sets event listeners", function() {
 
     beforeEach(function() {
       vm.runInNewContext(code, context);
@@ -24,30 +24,39 @@ describe("Background JS", function() {
 
     afterAll(function() {
       chrome.flush();
-    })
+    });
 
   });
 
-  describe("HandleUpdate()", function() {
+  describe("chrome.tabs.onUpdated.addListener()", function() {
 
-    beforeEach(function() {
+    it("does not invoke HandleUpdate() if there is no url", function() {
       vm.runInNewContext(code, context);
-      chrome.tabs.onUpdated.dispatch(1234, { url: "test" });
-      chrome.storage.sync.get.yields({ allData: [] });
+      chrome.tabs.onUpdated.dispatch(1234, { url: null });
+      expect(chrome.storage.sync.get.called).toEqual(false);
     });
 
-    it("gets data from chrome.storage", function() {
-      expect(chrome.storage.sync.get.called).toEqual(true);
-    });
+    describe("invokes HandleUpdate() if there is a url", function() {
 
-    it("pushes updated array into chrome.storage", function() {
-      console.log(chrome.storage.sync.set.calledWith);
-      expect(chrome.storage.sync.set.called).toEqual(true);
+      beforeEach(function() {
+        vm.runInNewContext(code, context);
+        chrome.tabs.onUpdated.dispatch(1234, { url: "test" });
+        chrome.storage.sync.get.yields({ allData: [] });
+      });
+
+      it("gets all data from chrome.storage", function() {
+        expect(chrome.storage.sync.get.called).toEqual(true);
+      });
+
+      it("pushes updated data into chrome.storage", function() {
+        expect(chrome.storage.sync.set.called).toEqual(true);
+      });
+
     });
 
     afterAll(function() {
       chrome.flush();
-    })
+    });
 
   });
 
