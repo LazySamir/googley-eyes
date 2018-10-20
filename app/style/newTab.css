@@ -1,25 +1,32 @@
-
 html {
   background: url('chrome-extension://__MSG_@@extension_id__/images/background.jpg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
 }
 
 body {
   height: 100%;
-  font-family: monospace;
+  margin: 0;
+  font-family: 'Open Sans',sans-serif;
 }
 
-#welcome_container {
+#clock-container {
   margin: auto;
-  width: 60%;
+  margin-top: 40px;
+  display: block;
   text-align: center;
-  background: rgba(179, 230, 255, 0.6);
-  box-shadow: 10px 10px 5px grey;
 }
 
-#welcome_message {
-  padding: 10px;
+#hour { color: white; font-size: 80px; }
+#colon { color: white; font-size: 80px; }
+#minute {  color: white; font-size: 80px; }
+
+#welcome-message {
+  text-align: center;
+  margin-top: 0;
+  color: white;
+  font-size: 20px;
+}
+
+#latest-links {
+  
 }
