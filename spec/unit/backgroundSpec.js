@@ -39,6 +39,7 @@ describe("background.js", function() {
     describe("invokes handleUpdate() if there is a change in url", function() {
 
       beforeEach(function() {
+        chrome.storage.sync.get.yields({ allData: [] });
         vm.runInNewContext(code, context);
         chrome.tabs.onUpdated.dispatch(1234, { "url": "test" });
       });
@@ -53,7 +54,6 @@ describe("background.js", function() {
 
       it("does not set data in chrome.storage if it is already saved", function() {
         chrome.tabs.onUpdated.dispatch(1234, { "url": "test" });
-        console.log(chrome.storage.sync.get);
         expect(chrome.storage.sync.set.calledOnce).toEqual(true);
         expect(chrome.storage.sync.set.calledTwice).toEqual(false);
       });
