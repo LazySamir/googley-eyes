@@ -13,6 +13,9 @@
   "permissions": [
     "tabs"
   ],
+  "chrome_url_overrides" : {
+  "newtab": "newTab.html"
+},
   "background": {
     "scripts": ["background.js"],
     "persistent": false
