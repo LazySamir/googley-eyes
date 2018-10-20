@@ -1,18 +1,16 @@
-function HandleUpdate(url) {
+function handleUpdate(url) {
   console.log(url);
-    chrome.storage.sync.get({allData: []}, function(result) {
-      console.log("data retrieved");
-      console.log(result.allData);
-      var allDataArray = result.allData;
-      allDataArray.push({ url: url });
+  chrome.storage.sync.get({"allData": []}, function(result) {
+    console.log("data retrieved");
+    console.log(result.allData);
+    let allDataArray = result.allData;
+    if (allDataArray.every(function(el) { return el.url !== url } )) {
+      allDataArray.push({ "url": url });
       console.log("updated array");
       console.log(allDataArray);
-      chrome.storage.sync.set({allData: allDataArray}, function() {
-        chrome.storage.sync.get("allData", function(result) {
-          console.log(result.allData);
-        });
-      });
-    });
+      chrome.storage.sync.set({"allData": allDataArray});
+    };
+  });
 };
 
 chrome.browserAction.onClicked.addListener(function () {
@@ -20,9 +18,7 @@ chrome.browserAction.onClicked.addListener(function () {
 });
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-  console.log("ive fired");
   if(!!changeInfo.url) {
-    console.log(changeInfo);
-    HandleUpdate(changeInfo.url);
-  }
+    handleUpdate(changeInfo.url);
+  };
 });
