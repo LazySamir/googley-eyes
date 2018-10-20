@@ -41,7 +41,7 @@ describe("Background JS", function() {
     });
 
     it("pushes updated array into chrome.storage", function() {
-      console.log(chrome.storage.sync.set);
+      console.log(chrome.storage.sync.set.calledWith);
       expect(chrome.storage.sync.set.called).toEqual(true);
     });
 
