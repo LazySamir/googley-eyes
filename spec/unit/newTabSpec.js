@@ -30,10 +30,12 @@ describe("newTab", function() {
 
   describe("LatestLinks", function() {
     let container = {
-                      innerHTML: {}
-                    };
+          innerHTML: {}
+        };
     let latestLinks = new L.LatestLinks(container, chrome);
-    let result = { allData: [] };
+    let result = {
+          allData: []
+        };
 
     it("gets urls from local storage", function() {
       spyOn(latestLinks, 'convertToHTML');
