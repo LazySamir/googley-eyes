@@ -1,5 +1,6 @@
 function getLatestUrls() {
   chrome.storage.sync.get(null, function(data) {
+    console.log(data['allData']);
     return data;
   })
 }
