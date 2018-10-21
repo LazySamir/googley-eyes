@@ -12,6 +12,7 @@
   },
   "permissions": [
     "tabs",
+    "storage",
     "activeTab"
   ],
   "chrome_url_overrides" : {
