@@ -1,27 +1,20 @@
-let H = 0;
-let M = 0;
-let S = 0;
+(function(exports) {
+  function Clock() {};
 
-function addZero(i) {
+  Clock.prototype.getNewTime = function() {
+    let date = new Date();
+    let s = this.addZero(date.getSeconds());
+    let m = this.addZero(date.getMinutes());
+    let h = this.addZero(date.getHours());
+    return [h, m, s];
+  };
+
+  Clock.prototype.addZero = function(i) {
     if (i < 10) {
         i = "0" + i;
     }
     return i;
-}
+  };
 
-setInterval(()=>{
-  let minute = document.getElementById("minute");
-  let hour = document.getElementById("hour");
-  let second = document.getElementById("second");
-
-  date = new Date();
-
-  S = addZero(date.getSeconds());
-  M = addZero(date.getMinutes());
-  H = addZero(date.getHours());
-
-  second.innerHTML = S;
-  minute.innerHTML = M;
-  hour.innerHTML = H;
-
-}, 10);
+  exports.Clock = Clock;
+})(this);

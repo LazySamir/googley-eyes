@@ -1,14 +1,15 @@
 "use strict";
 
-// const clock = require('../../app/newTab/clock');
-// const links = require('../../app/newTab/latestLinks');
+const vm = require('vm');
+const fs = require('fs');
+const C = require('../../app/newTab/clock')
 
 describe("newTab", function() {
 
-
-  describe("clock.js", function() {
+  describe("Clock", function() {
 
     let time = new Date(2018, 10, 21, 13, 24, 1);
+    let clock = new C.Clock();
 
     beforeEach(function() {
       jasmine.clock().install();
@@ -19,32 +20,16 @@ describe("newTab", function() {
       jasmine.clock().uninstall();
     });
 
-    it("returns the current time", function() {
-      expect(new Date().getTime()).toEqual(time.getTime());
-    });
-
-    it("adds a zero to numbers less than 10", function() {
-      // expect(clock.addZero(5)).toEqual(05);
+    it("determines new pretty time", function() {
+      expect(clock.getNewTime()).toEqual([13, 24, "01"])
     });
 
   });
 
-  describe("latestLinks.js", function() {
+  describe("LatestLinks", function() {
 
-    it("getsLatestUrls from local storage", function() {
+    it("gets urls from local storage", function() {
       // expect(chrome.storage.sync.get.called).toEqual(true);
-    });
-
-    it("converts array of objects to HTML string", function() {
-
-    });
-
-    it("limits the display of HTML to 40 chars", function() {
-
-    });
-
-    it("injects the html into the links-container", function() {
-
     });
 
   });

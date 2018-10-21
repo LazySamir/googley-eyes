@@ -1,34 +1,34 @@
 (function(exports) {
 
-  function getLatestUrls() {
+  function LatestLinks() {};
+
+  LatestLinks.prototype.getLatestUrls = function() {
     chrome.storage.sync.get(null, function(result) {
-      convertToHTML(result.allData)
+      this.convertToHTML(result.allData)
     });
   };
 
-  function convertToHTML(allData) {
+  LatestLinks.prototype.convertToHTML = function(allData) {
     let latest = allData.reverse();
     let output = "<ul>";
     for(let i = 0; i < 5; i++) {
       output += `<li><a href="${allData[i]['url']}">${first40Chars(allData[i]['url'])}</a></li>`
     }
     output += "</ul>";
-    injectHTML(output);
+    this.injectHTML(output);
   }
 
-  function first40Chars(url) {
+  LatestLinks.prototype.first40Chars = function(url) {
     if (url.length > 40) {
       url = url.slice(0, 37) + '...'
     }
     return url;
   }
 
-  function injectHTML(output) {
+  LatestLinks.prototype.injectHTML = function(output) {
     let container = document.getElementById("links-container")
     container.innerHTML = output;
   }
 
-  exports.getLatestUrls = getLatestUrls;
+  exports.LatestLinks = LatestLinks;
 })(this);
-
-getLatestUrls();
