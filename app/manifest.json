@@ -6,10 +6,14 @@
   "description": "Web usage app",
   "manifest_version": 2,
   "browser_action": {
+    "default_icon": {
+      "32": "images/eyes32.png"
+    }
   },
 
   "permissions": [
-    "tabs"
+    "tabs",
+    "storage"
   ],
 
   "background": {
