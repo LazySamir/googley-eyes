@@ -60,7 +60,29 @@ li {
 }
 
 a {
-  width: 100%;
-  color: grey;
-  text-align: justify;
+  color: #999999;
+}
+
+#googley-eyes-container {
+  display: inline-block;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  vertical-align: middle;
+}
+
+#team-name {
+  height: 100%;
+  font-family: 'Open Sans',sans-serif;
+  color: #999999;
+  font-size: 15px;
+  margin-right: 5px;
+  display:inline-block;
+
+}
+
+#logo {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
 }
