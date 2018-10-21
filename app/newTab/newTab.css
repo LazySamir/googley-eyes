@@ -1,5 +1,5 @@
 html {
-  background: url('chrome-extension://__MSG_@@extension_id__/images/background.jpg') no-repeat center center fixed;
+  background: url('chrome-extension://__MSG_@@extension_id__/images/newTabBackground.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
