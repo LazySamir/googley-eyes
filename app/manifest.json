@@ -11,7 +11,8 @@
     }
   },
   "permissions": [
-    "tabs"
+    "tabs",
+    "activeTab"
   ],
   "chrome_url_overrides" : {
   "newtab": "newTab.html"

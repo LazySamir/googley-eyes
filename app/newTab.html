@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>New Tab</title>
-    <link rel="stylesheet" href="./style/newTab.css">
+    <link rel="stylesheet" href="./newTab/newTab.css">
   </head>
   <body>
     <div>
@@ -11,11 +11,17 @@
         <element id="hour"></element>
         <element id="colon">:</element>
         <element id="minute"></element>
+        <element id="colon">:</element>
+        <element id="second"></element>
       </div>
       <p id="welcome-message">New tab, new start.</p>
     </div>
-    <div id="latest-links"></div>
+    <div id="latest-links">
+      <p id="link-title">Places you've visited:</p>
+      <element id="links-container"></element>
+    </div>
 
-    <script src="./style/clock.js"></script>
+    <script src="./newTab/clock.js"></script>
+    <script src="./newTab/latestLinks.js"></script>
   </body>
 </html>
