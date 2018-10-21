@@ -11,5 +11,6 @@ window.setInterval(function() {
   // clock.injectHTML(hour, minute, second);
 }, 10);
 
-let latestLinks = new LatestLinks();
+let container = document.getElementById("links-container");
+let latestLinks = new LatestLinks(container);
 latestLinks.getLatestUrls();

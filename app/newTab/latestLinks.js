@@ -1,19 +1,22 @@
 (function(exports) {
 
-  function LatestLinks() {};
-
-  LatestLinks.prototype.getLatestUrls = function() {
-    chrome.storage.sync.get(null, function(result) {
-      this.convertToHTML(result.allData)
-    });
+  function LatestLinks(container, browser = chrome) {
+    this.container = container;
+    this.browser = browser;
   };
 
-  LatestLinks.prototype.convertToHTML = function(allData) {
-    let latest = allData.reverse();
+  LatestLinks.prototype.getLatestUrls = function() {
+    this.browser.storage.sync.get(null, this.convertToHTML.bind(this));
+  };
+
+  LatestLinks.prototype.convertToHTML = function(result) {
+    let latestUrls = result.allData.reverse();
     let output = "<ul>";
-    for(let i = 0; i < 5; i++) {
-      output += `<li><a href="${allData[i]['url']}">${first40Chars(allData[i]['url'])}</a></li>`
-    }
+    let loop = latestUrls.length;
+    if ( loop >= 5 ) { loop = 5 };
+    for(let i = 0; i < loop; i++) {
+      output += `<li><a href="${latestUrls[i]['url']}">${this.first40Chars(latestUrls[i]['url'])}</a></li>`
+    };
     output += "</ul>";
     this.injectHTML(output);
   }
@@ -26,8 +29,7 @@
   }
 
   LatestLinks.prototype.injectHTML = function(output) {
-    let container = document.getElementById("links-container")
-    container.innerHTML = output;
+    this.container.innerHTML = output;
   }
 
   exports.LatestLinks = LatestLinks;

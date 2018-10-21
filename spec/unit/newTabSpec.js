@@ -2,7 +2,9 @@
 
 const vm = require('vm');
 const fs = require('fs');
-const C = require('../../app/newTab/clock')
+const C = require('../../app/newTab/clock');
+const L = require('../../app/newTab/latestLinks');
+const chrome = require('sinon-chrome');
 
 describe("newTab", function() {
 
@@ -27,9 +29,29 @@ describe("newTab", function() {
   });
 
   describe("LatestLinks", function() {
+    let container = {
+                      innerHTML: {}
+                    };
+    let latestLinks = new L.LatestLinks(container, chrome);
+    let result = { allData: [] };
 
     it("gets urls from local storage", function() {
-      // expect(chrome.storage.sync.get.called).toEqual(true);
+      spyOn(latestLinks, 'convertToHTML');
+      chrome.storage.sync.get.yields(result);
+      latestLinks.getLatestUrls();
+      expect(latestLinks.convertToHTML).toHaveBeenCalledWith(result);
+    });
+
+    it("converts to a pretty HTML string", function() {
+      spyOn(latestLinks, 'injectHTML');
+      let result = { allData: [ { url: "this_is_a_test_to_check_for_a_long_pretty_print" } ] };
+      latestLinks.convertToHTML(result);
+      expect(latestLinks.injectHTML).toHaveBeenCalledWith('<ul><li><a href="this_is_a_test_to_check_for_a_long_pretty_print">this_is_a_test_to_check_for_a_long_pr...</a></li></ul>')
+    });
+
+    it("injects string into DOM", function() {
+      latestLinks.injectHTML("test");
+      expect(container.innerHTML).toEqual("test")
     });
 
   });
