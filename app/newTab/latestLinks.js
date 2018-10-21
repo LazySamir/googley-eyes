@@ -1,26 +1,34 @@
-function getLatestUrls() {
-  chrome.storage.sync.get(null, function(data) {
-    console.log(data['allData']);
-    return data;
-  })
-}
+(function(exports) {
 
-function convertToHTML(urls) {
-  // var urlArray = urls['allData']
-  // var output = "<ul>"
-  //
-  // for(var i = 0; i < urlArray.length; i++) {
-  //   output += `<li><div>${urlArray[i]['url']}</div></li>`
-  // }
-  // output += "</ul>"
-  return urls
-}
+  function getLatestUrls() {
+    chrome.storage.sync.get(null, function(result) {
+      convertToHTML(result.allData)
+    });
+  };
 
-function injectHTML(string) {
-  let result = document.getElementById("links-container")
-  result.innerHTML = string;
-}
+  function convertToHTML(allData) {
+    let latest = allData.reverse();
+    let output = "<ul>";
+    for(let i = 0; i < 5; i++) {
+      output += `<li><a href="${allData[i]['url']}">${first40Chars(allData[i]['url'])}</a></li>`
+    }
+    output += "</ul>";
+    injectHTML(output);
+  }
 
-let urls = getLatestUrls();
-let string = convertToHTML(urls);
-injectHTML(string);
+  function first40Chars(url) {
+    if (url.length > 40) {
+      url = url.slice(0, 37) + '...'
+    }
+    return url;
+  }
+
+  function injectHTML(output) {
+    let container = document.getElementById("links-container")
+    container.innerHTML = output;
+  }
+
+  exports.getLatestUrls = getLatestUrls;
+})(this);
+
+getLatestUrls();

@@ -17,23 +17,50 @@ body {
 }
 
 #hour { color: #404040; font-size: 80px; }
-#colon { color: #404040; font-size: 80px; }
+#colon { color: #404040; font-size: 80px; margin-left: 2px; margin-right: 2px; }
 #minute {  color: #404040; font-size: 80px; }
 #second {  color: #404040; font-size: 80px; }
 
 #welcome-message {
   margin-top: 0;
-  margin-left: 65px;
+  margin-left: 20px;
   color: #999999;
   font-size: 20px;
 }
 
 #latest-links {
   margin-top: 40px;
-  margin-left: 65px;
+  margin-left: 80px;
+  width: 35%;
 }
 
 #link-title {
   color: #595959;
   font-size: 20px;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  flex-grow: 1;
+  text-align: justify;
+  width: 100%;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+a {
+  width: 100%;
+  color: grey;
+  text-align: justify;
 }
