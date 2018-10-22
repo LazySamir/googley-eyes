@@ -11,7 +11,6 @@ describe("newTab", function() {
   describe("Clock", function() {
 
     let time = new Date("October 21, 2018 13:24:01")
-    console.log(time);
     let clock = new C.Clock();
 
     beforeEach(function() {
