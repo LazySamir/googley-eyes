@@ -8,7 +8,6 @@ window.setInterval(function() {
   hour.innerHTML = timeArray[0];
   minute.innerHTML = timeArray[1];
   second.innerHTML = timeArray[2];
-  // clock.injectHTML(hour, minute, second);
 }, 10);
 
 let container = document.getElementById("links-container");
