@@ -22,6 +22,10 @@ describe("background.js", function() {
       expect(chrome.tabs.onUpdated.addListener.called).toEqual(true);
     });
 
+    it("creates an addListener() for chrome.tabs.onActivated", function() {
+      expect(chrome.tabs.onActivated.addListener.called).toEqual(true);
+    });
+
     afterEach(function() {
       chrome.flush();
     });
@@ -54,6 +58,45 @@ describe("background.js", function() {
 
       it("does not set data in chrome.storage if it is already saved", function() {
         chrome.tabs.onUpdated.dispatch(1234, { "url": "test" });
+        expect(chrome.storage.sync.set.calledOnce).toEqual(true);
+        expect(chrome.storage.sync.set.calledTwice).toEqual(false);
+      });
+
+    });
+
+    afterEach(function() {
+      chrome.flush();
+    });
+
+  });
+
+  describe("chrome.tabs.onActivated.addListener()", function() {
+
+
+    describe("invokes handleUpdate() if there is a tab change", function() {
+
+      beforeEach(function() {
+        chrome.storage.sync.get.yields({ allData: [] });
+        chrome.tabs.get.yields({"url": "test"})
+        vm.runInNewContext(code, context);
+        chrome.tabs.onActivated.dispatch({});
+      });
+
+      it("invokes chrome.tabs.get when event listener is fired", function() {
+        expect(chrome.tabs.get.calledOnce).toEqual(true);
+      })
+
+      it("gets all data from chrome.storage", function() {
+
+        expect(chrome.storage.sync.get.calledOnce).toEqual(true);
+      });
+
+      it("pushes updated data into chrome.storage", function() {
+        expect(chrome.storage.sync.set.calledOnce).toEqual(true);
+      });
+
+      it("does not set data in chrome.storage if it is already saved", function() {
+        chrome.tabs.onActivated.dispatch(1234);
         expect(chrome.storage.sync.set.calledOnce).toEqual(true);
         expect(chrome.storage.sync.set.calledTwice).toEqual(false);
       });

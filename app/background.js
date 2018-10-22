@@ -64,3 +64,9 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 
 
 });
+
+chrome.tabs.onActivated.addListener(function(current) {
+  chrome.tabs.get(current.tabId, function(tab) {
+   handleUpdate(tab.url);
+  });
+});

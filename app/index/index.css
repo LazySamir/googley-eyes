@@ -1,0 +1,28 @@
+html {
+  background: url('chrome-extension://__MSG_@@extension_id__/images/indexBackground.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+#googley-eyes-container {
+  display: inline-block;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  vertical-align: middle;
+}
+
+#team-name {
+  height: 100%;
+  font-family: 'Open Sans',sans-serif;
+  color: #404040;
+  font-size: 15px;
+  margin-right: 5px;
+  display:inline-block;
+
+}
+
+#logo {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}

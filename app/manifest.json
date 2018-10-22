@@ -1,21 +1,25 @@
 {
   "name": "Googley Eyes",
 
-  "version": "1.1",
+  "version": "1.4",
 
   "description": "Web usage app",
   "manifest_version": 2,
   "browser_action": {
     "default_icon": {
-      "32": "images/eyes32.png"
+      "32": "images/eyeslogo32.png",
+      "64": "images/eyeslogo64.png",
+      "128": "images/eyeslogo128.png"
     }
   },
-
   "permissions": [
     "tabs",
-    "storage"
+    "storage",
+    "activeTab"
   ],
-
+  "chrome_url_overrides" : {
+  "newtab": "newTab.html"
+},
   "background": {
     "scripts": ["background.js"],
     "persistent": false
