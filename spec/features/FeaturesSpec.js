@@ -6,37 +6,35 @@ let app_url = 'chrome-extension://loindgcbdjommoaimpnmkhnnbhpeoolh/index.html'
 
   describe("Extension is loaded correctly", function() {
 
-    beforeEach(function() {
-      browser.pause(1000);
-    })
-
-    it("opens index.html", function() {
-      browser.pause(2000);
+    it("index.html can be opened", function() {
       browser.url(app_url)
-      browser.pause(2000);
+      browser.pause(200);
       expect(browser.getTitle()).toEqual("Googley Eyes");
-      browser.pause(10000);
+      browser.pause(100);
     });
 
   });
 
-  describe("URLs are recorded", function() {
+  describe("Index View", function() {
 
-    it("displays visited URLs on index.html", function() {
+    it("displays visited URLs", function() {
       browser.url("https://www.bbc.co.uk");
       browser.url(app_url)
-      expect(browser.getHTML(".url_container", false)).toEqual("<ul><li>https://www/bbc.co.uk</li></ul>");
-      browser.pause(10000)
+      expect(browser.getText("#url_container")).toContain("https://www.bbc.co.uk");
+      browser.pause(100)
     });
 
   });
 
-  describe("New Tab", function() {
+  describe("New Tab View", function() {
 
     it("displays latest URLs", function() {
-      browser.url()
-      expect(browser.getHTML(".url_container", false)).toEqual("<ul><li>https://www/bbc.co.uk</li></ul>");
-      browser.pause(10000)
+      // browser.pause(100);
+      browser.url("https://www.bbc.co.uk");
+      browser.url("chrome://newtab/")
+      browser.pause(200)
+      expect(browser.getText("#links-container")).toContain("https://www.bbc.co.uk/");
+      // browser.pause(10000)
     });
 
   });
