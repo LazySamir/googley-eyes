@@ -10,7 +10,8 @@ describe("newTab", function() {
 
   describe("Clock", function() {
 
-    let time = new Date(2018, 10, 21, 13, 24, 1);
+    let time = new Date("October 21, 2018 13:24:01")
+    console.log(time);
     let clock = new C.Clock();
 
     beforeEach(function() {
@@ -25,6 +26,10 @@ describe("newTab", function() {
     it("determines new pretty time", function() {
       expect(clock.getNewTime()).toEqual([13, 24, "01"])
     });
+
+    it("determines new pretty date", function() {
+      expect(clock.getNewDate()).toEqual("Sunday, October 21, 2018")
+    })
 
   });
 

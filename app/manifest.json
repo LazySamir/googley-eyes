@@ -1,6 +1,8 @@
 {
   "name": "Googley Eyes",
-  "version": "1.2",
+
+  "version": "1.4",
+
   "description": "Web usage app",
   "manifest_version": 2,
   "browser_action": {
@@ -23,3 +25,4 @@
     "persistent": false
   }
 }
+g
