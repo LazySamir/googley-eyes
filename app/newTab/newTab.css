@@ -1,0 +1,89 @@
+html {
+  background: url('chrome-extension://__MSG_@@extension_id__/images/newTabBackground.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Open Sans',sans-serif;
+}
+
+#clock-container {
+  width: 100%;
+  margin: auto;
+  margin-top: 60px;
+  margin-left: 60px;
+}
+
+#hour { color: #737373; font-size: 80px; }
+#colon { color: #737373; font-size: 80px; margin-left: 2px; margin-right: 2px; }
+#minute {  color: #737373; font-size: 80px; }
+#second {  color: #737373; font-size: 80px; }
+#date { display: block; color: #999999; font-size: 20px; margin-top: 5px; }
+
+#welcome-message {
+  margin-top: 0;
+  margin-left: 0;
+  color: #999999;
+  font-size: 15px;
+}
+
+#latest-links {
+  margin-top: 40px;
+  margin-left: 60px;
+  width: 35%;
+}
+
+#link-title {
+  color: #737373;
+  font-size: 20px;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  flex-grow: 1;
+  text-align: justify;
+  width: 100%;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+a {
+  color: #999999;
+}
+
+#googley-eyes-container {
+  display: inline-block;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  vertical-align: middle;
+}
+
+#team-name {
+  height: 100%;
+  font-family: 'Open Sans',sans-serif;
+  color: #999999;
+  font-size: 15px;
+  margin-right: 5px;
+  display:inline-block;
+
+}
+
+#logo {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
