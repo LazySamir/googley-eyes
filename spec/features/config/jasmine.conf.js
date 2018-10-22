@@ -3,7 +3,7 @@ const defaultTimeoutInterval  = process.env.DEBUG ? (60 * 60 * 500) : 90000;
 
 var fs = require("fs");
 var Buffer = require("buffer").Buffer;
-var extensionChrome = fs.readFileSync("./crx/app-1-2.crx");
+var extensionChrome = fs.readFileSync("./crx/app.crx");
 
 exports.config = {
   specs: [
