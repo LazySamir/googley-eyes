@@ -15,8 +15,8 @@ function handleUpdate(url) {
       allDataArray.push({ "url": url, "duration": 0 });
       console.log("updated array");
       console.log(allDataArray);
-      chrome.storage.sync.set({"allData": allDataArray});
     };
+    chrome.storage.sync.set({"allData": allDataArray});
   });
 };
 
@@ -35,9 +35,10 @@ function updateTime(allDataArray) {
   }
   else { // if lastUpdatedTime has a value
     console.log(lastUpdatedTime)
-    var dur = duration(getTime(), lastUpdatedTime) // calc the duration, then:
-      console.log(allDataArray)
-
+    console.log("inside else")
+    var dur = duration(getTime(), lastUpdatedTime) // calc the duration
+    console.log(allDataArray)
+    console.log(currentUrl)
     allDataArray.forEach(function(element) {
       console.log("Im here")
       if (element.url === currentUrl) {
@@ -46,8 +47,6 @@ function updateTime(allDataArray) {
         element.duration += dur
       }
     })
-
-  //  allDataArray.push({ "duration": duration }); //code to enter the duration into the data store
     lastUpdatedTime = getTime() // set the lastUpdatedTime to current time
   }
 }
@@ -59,10 +58,7 @@ chrome.browserAction.onClicked.addListener(function () {
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   if(!!changeInfo.url) {
     handleUpdate(changeInfo.url);
-    //updateTime();
   };
-
-
 });
 
 chrome.tabs.onActivated.addListener(function(current) {
