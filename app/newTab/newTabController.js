@@ -2,6 +2,9 @@ let clock = new Clock();
 let minute = document.getElementById("minute");
 let hour = document.getElementById("hour");
 let second = document.getElementById("second");
+let date = document.getElementById("date");
+let newDate = clock.getNewDate();
+date.innerHTML = newDate;
 
 window.setInterval(function() {
   let timeArray = clock.getNewTime();
