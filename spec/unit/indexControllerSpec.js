@@ -1,5 +1,3 @@
-// Need to read from localStorage - expect the output to be JSON key value pairs
-
 "use strict";
 
 const IC = require('../../app/index/indexController');
@@ -30,10 +28,10 @@ describe("IndexController", function() {
 
     it("invokes .getHTML() on indexView", function() {
       spyOn(view, "getHTML");
-      controller.URLs = "urls"
+      // controller.data = {"urls"}
       let url_container = "<div></div>"
       controller.injectHTML(url_container);
-      expect(view.getHTML).toHaveBeenCalledWith("urls");
+      expect(view.getHTML).toHaveBeenCalledWith(controller.data);
     });
 
   });
