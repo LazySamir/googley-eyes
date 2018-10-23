@@ -13,15 +13,30 @@ Googley Eyes is a chrome extension that accesses your browser history and presen
 
 ## How do I run it?
 
-
 ##### Download the app
 ```
 $ git clone git@github.com:LazySamir/googley-eyes.git
 $ cd googley-eyes
 ```
+#### Add extension to chrome from the repository
+Visit: chrome://extensions/
+Click 'Load unpacked'
+Navigate to and select the 'googley-eyes/app' directory
+
+#### Add the extension to chrome from chrome store
+Visit: https://chrome.google.com/webstore/detail/googley-eyes/pmmhkfmjlmfafdbmncichafmcchedefb
+
+Click 'Add to Chrome'
 
 ### How do I use it?
+Click Extension Icon to open a new googley-eyes analytics page
 
+[Image of extension icon]
+[Image of example analytics page]
+
+Open a new browser tab to see your recent history.
+
+[Image of example new tab page]
 
 ## User Stories
 
