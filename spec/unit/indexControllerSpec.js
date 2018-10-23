@@ -5,7 +5,8 @@
 const IC = require('../../app/index/indexController');
 const model = { queryLocalStorage: function(){ return "urls" } };
 const view = { getHTML: function(){} };
-const controller = new IC.IndexController(model, view)
+const urlParser = { mapAllData: function() {} }
+const controller = new IC.IndexController(model, view, urlParser)
 
 describe("IndexController", function() {
 
@@ -35,5 +36,13 @@ describe("IndexController", function() {
     });
 
   });
+
+  describe(".parseUrls()", function() {
+    it("invokes .mapAllData() on urlParser", function() {
+      spyOn(urlParser, "mapAllData");
+      controller.parseUrls("X");
+      expect(urlParser.mapAllData).toHaveBeenCalledWith("X");
+    })
+  })
 
 });
