@@ -2,19 +2,12 @@ var currentUrl = "test"
 var lastUpdatedTime = ""
 
 function handleUpdate(url) {
-  console.log(url);
-  console.log(currentUrl);
   chrome.storage.sync.get({"allData": []}, function(result) {
-    console.log("data retrieved");
-    console.log(result.allData);
     let allDataArray = result.allData;
     updateTime(allDataArray);
     currentUrl = url;
     if (allDataArray.every(function(el) { return el.url !== url } )) {
-      console.log(allDataArray.length)
       allDataArray.push({ "url": url, "duration": 0 });
-      console.log("updated array");
-      console.log(allDataArray);
     };
     chrome.storage.sync.set({"allData": allDataArray});
   });
@@ -29,25 +22,17 @@ function duration(timeNow, lastUpdatedTime) {
 }
 
 function updateTime(allDataArray) {
-  if (!lastUpdatedTime) { // if lastUpdatedTime is null (this is the first url visited)
-    lastUpdatedTime = getTime() // set lastUpdatedTime to current time
-    console.log(lastUpdatedTime)
+  if (!lastUpdatedTime) {
+    lastUpdatedTime = getTime()
   }
-  else { // if lastUpdatedTime has a value
-    console.log(lastUpdatedTime)
-    console.log("inside else")
-    var dur = duration(getTime(), lastUpdatedTime) // calc the duration
-    console.log(allDataArray)
-    console.log(currentUrl)
+  else {
+    var dur = duration(getTime(), lastUpdatedTime)
     allDataArray.forEach(function(element) {
-      console.log("Im here")
       if (element.url === currentUrl) {
-        console.log(element.url + element.duration)
-        console.log(dur)
         element.duration += dur
       }
     })
-    lastUpdatedTime = getTime() // set the lastUpdatedTime to current time
+    lastUpdatedTime = getTime()
   }
 }
 
