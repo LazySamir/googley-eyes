@@ -6,9 +6,30 @@ const URL = require('url-parse');
   function UrlParser(){};
 
   UrlParser.prototype.parseUrl = function(url) {
-    let parsedUrl = new URL(url);
-    return parsedUrl.hostname;
+    let parsedUrl = new URL(url['url']);
+    return { url: parsedUrl.hostname, duration: url['duration'] };
   };
+
+  UrlParser.prototype.mapAllData = function(allData) {
+    let mappedData = allData.map( item => this.parseUrl(item));
+    let reducedData = mappedData.reduce(reduceData, []);
+    return reducedData;
+  };
+
+  function reduceData(acc, obj) {
+    if ( acc.every(function(el) { return el.url !== obj.url }) ) {
+     console.log("item does not already exist");
+     acc.push({ url: obj.url , duration: obj.duration })
+   } else {
+     console.log("item already exists in acc array");
+     let result = acc.find(function(accObj) { return accObj.url === obj.url });
+     console.log(result);
+     result.duration += obj.duration;
+     console.log(result);
+   }
+    console.log(acc);
+    return acc;
+  }
 
   exports.UrlParser = UrlParser;
 })(this);
