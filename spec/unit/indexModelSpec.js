@@ -20,4 +20,11 @@ describe("IndexModel", function() {
       expect(chrome.storage.sync.get).toHaveBeenCalled()
     });
   });
+
+  describe("convertDuration", function(){
+    it("converts milliseconds into hh:mm:ss format", function(){
+      expect(model.convertDuration(5000)).toEqual("00:00:05")
+    })
+
+  })
 });
