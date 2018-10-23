@@ -28,7 +28,6 @@ describe("IndexController", function() {
 
     it("invokes .getHTML() on indexView", function() {
       spyOn(view, "getHTML");
-      // controller.data = {"urls"}
       let url_container = "<div></div>"
       controller.injectHTML(url_container);
       expect(view.getHTML).toHaveBeenCalledWith(controller.data);
