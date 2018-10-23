@@ -19,7 +19,7 @@ describe("IndexController", function() {
 
     it("assigns the result to this.URLs", function() {
       controller.retrieveURLs();
-      expect(controller.URLs).toEqual("urls");
+      expect(controller.data).toEqual("urls");
     });
 
   });

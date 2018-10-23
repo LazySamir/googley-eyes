@@ -1,9 +1,9 @@
 (function(exports) {
-  function IndexView(model) {
+  function IndexView(model = new IndexModel()) {
     this.model = model
   }
-  IndexView.prototype.getHTML = function() {
-     var urlArray = this.model.data['allData']
+  IndexView.prototype.getHTML = function(data) {
+     var urlArray = data['allData']
      var output = "<ul>"
 
      for(var i = 0; i < urlArray.length; i++) {
