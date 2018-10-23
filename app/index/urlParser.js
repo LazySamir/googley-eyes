@@ -5,16 +5,16 @@ const URL = require('url-parse');
 
   function UrlParser(){};
 
-  UrlParser.prototype.parseUrl = function(url) {
-    let parsedUrl = new URL(url['url']);
-    return { url: parsedUrl.hostname, duration: url['duration'] };
-  };
-
   UrlParser.prototype.mapAllData = function(allData) {
-    let mappedData = allData.map( item => this.parseUrl(item));
+    let mappedData = allData.map( item => parseUrl(item));
     let reducedData = mappedData.reduce(reduceData, []);
     return reducedData;
   };
+
+  function parseUrl(url) {
+    let parsedUrl = new URL(url['url']);
+    return { url: parsedUrl.hostname, duration: url['duration'] };
+  }
 
   function reduceData(acc, obj) {
     if ( acc.every(function(el) { return el.url !== obj.url }) ) {
