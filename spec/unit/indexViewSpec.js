@@ -1,5 +1,5 @@
-const IV = require('../../app/indexView');
-const IM = require('../../app/indexModel');
+const IV = require('../../app/index/indexView');
+const IM = require('../../app/index/indexModel');
 const chrome = require('sinon-chrome')
 const model = new IM.IndexModel(chrome)
 model.data = {'allData' : [{'url': "www.bbc.co.uk"}, {'url': "www.facebook.com"}]}

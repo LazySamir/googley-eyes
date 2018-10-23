@@ -2,7 +2,7 @@
 
 "use strict";
 
-const IC = require('../../app/indexController');
+const IC = require('../../app/index/indexController');
 const model = { queryLocalStorage: function(){ return "urls" } };
 const view = { getHTML: function(){} };
 const controller = new IC.IndexController(model, view)

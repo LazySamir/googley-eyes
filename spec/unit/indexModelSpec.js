@@ -1,4 +1,4 @@
-const IM = require('../../app/indexModel');
+const IM = require('../../app/index/indexModel');
 
 const chrome = {
   storage: {
