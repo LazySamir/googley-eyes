@@ -3,7 +3,7 @@
 "use strict";
 
 const IC = require('../../app/index/indexController');
-const model = { queryLocalStorage: function(){ return "urls" } };
+const model = { queryLocalStorage: function(){ return { allData: "urls" } } };
 const view = { getHTML: function(){} };
 const urlParser = { mapAllData: function() {} }
 const controller = new IC.IndexController(model, view, urlParser)
@@ -13,15 +13,16 @@ describe("IndexController", function() {
   describe(".retrieveURLs()", function() {
 
     it("invokes .queryLocalStorage() on indexModel", function() {
-      spyOn(model, "queryLocalStorage");
-      controller.retrieveURLs();
+      spyOn(model, "queryLocalStorage").and.returnValue({ allData: "urls" });
+      controller.retrieveURLs(urlParser.mapAllData);
       expect(model.queryLocalStorage).toHaveBeenCalled();
     });
 
-    it("assigns the result to this.URLs", function() {
-      controller.retrieveURLs();
-      expect(controller.URLs).toEqual("urls");
-    });
+    it("invokes .mapAllData() on urlParser", function() {
+      spyOn(urlParser, "mapAllData");
+      controller.retrieveURLs(urlParser.mapAllData);
+      expect(urlParser.mapAllData).toHaveBeenCalledWith("urls");
+    })
 
   });
 
@@ -36,13 +37,5 @@ describe("IndexController", function() {
     });
 
   });
-
-  describe(".parseUrls()", function() {
-    it("invokes .mapAllData() on urlParser", function() {
-      spyOn(urlParser, "mapAllData");
-      controller.parseUrls("X");
-      expect(urlParser.mapAllData).toHaveBeenCalledWith("X");
-    })
-  })
 
 });
