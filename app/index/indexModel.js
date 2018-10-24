@@ -1,10 +1,15 @@
 "use strict";
 
 (function(exports) {
-  function IndexModel(browser = chrome, urlParser) {
+  function IndexModel(browser = chrome, urlParser, chartDataConverter) {
     this.browser = browser;
     console.log("constructor" + urlParser)
     this.urlParser = urlParser
+    this.chartDataConverter = chartDataConverter
+  }
+
+  IndexModel.prototype.getPieData = function(parsedData) {
+    this.data = this.chartDataConverter.convertToPie(parsedData)
   }
 
   IndexModel.prototype.queryLocalStorage = function() {

@@ -1,13 +1,25 @@
 const IM = require('../../app/index/indexModel');
 const chrome = require("sinon-chrome")
 const UP = require("../../app/index/urlParser")
+const CDC = require("../../app/index/chartDataConverter")
 const urlParser = { mapAllData: function() {} };
+const chartDataConverter = { convertToPie: function() {} };
 
 console.log(UP.UrlParser);
 
-const model = new IM.IndexModel(chrome, urlParser);
+const model = new IM.IndexModel(chrome, urlParser, chartDataConverter);
 
 describe("IndexModel", function() {
+
+  describe(".getPieData()", function() {
+
+    it("invokes .convertToPie()", function() {
+      spyOn(chartDataConverter, "convertToPie")
+      model.getPieData()
+      expect(chartDataConverter.convertToPie).toHaveBeenCalled()
+    });
+
+  });
 
   describe(".queryLocalStorage()", function() {
 

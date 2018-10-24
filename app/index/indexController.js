@@ -8,9 +8,14 @@
     this.data = this.model.queryLocalStorage();
   }
 
+  IndexController.prototype.retrievePieData = function() {
+    this.pieData = this.model.getPieData(this.data);
+  }
+
   IndexController.prototype.injectHTML = function(htmlElement) {
     htmlElement.innerHTML = this.view.getHTML(this.data);
   }
+
 
   exports.IndexController = IndexController;
 })(this)

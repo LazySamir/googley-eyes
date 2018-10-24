@@ -1,7 +1,8 @@
 "use strict";
 
 const IC = require('../../app/index/indexController');
-const model = { queryLocalStorage: function(){ return { allData: "urls" } } };
+const model = { queryLocalStorage: function(){ return { allData: "urls" }},
+               getPieData: function() {return { allData: "newUrls" }} };
 const view = { getHTML: function(){} };
 const controller = new IC.IndexController(model, view)
 
@@ -22,6 +23,14 @@ describe("IndexController", function() {
     // })
 
   });
+
+  describe(".retrievePieData()", function() {
+    it("invokes .getPieData() on indexModel", function() {
+      spyOn(model, "getPieData");
+      controller.retrievePieData();
+      expect(model.getPieData).toHaveBeenCalled()
+    })
+  })
 
   describe(".injectHTML()", function() {
 
