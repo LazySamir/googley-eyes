@@ -1,9 +1,14 @@
 "use strict";
 
 (function(exports) {
-  function IndexModel(browser = chrome, urlParser = new UrlParser()) {
+  function IndexModel(browser = chrome, urlParser = new UrlParser(), chartDataConverter = new ChartDataConverter()) {
     this.browser = browser;
-    this.urlParser = urlParser;
+    this.urlParser = urlParser
+    this.chartDataConverter = chartDataConverter
+  }
+
+  IndexModel.prototype.getPieData = function(parsedData) {
+    return this.chartDataConverter.convertToPie(parsedData)
   }
 
   IndexModel.prototype.queryLocalStorage = function() {

@@ -2,7 +2,7 @@
 
 describe("Features Spec", function() {
 
-let app_url = 'chrome-extension://dfjglldhnemoebdjibmhjnkmdheemlki/index.html'
+let app_url = 'chrome-extension://obeodffpnocodidnimnccjgdjhfddmgm/index.html'
 
   describe("Extension is loaded correctly", function() {
 
@@ -23,6 +23,16 @@ let app_url = 'chrome-extension://dfjglldhnemoebdjibmhjnkmdheemlki/index.html'
       browser.pause(1000)
       expect(browser.getText("#url-container")).toContain("www.bbc.co.uk");
       expect(browser.getText("#url-container")).toContain("00:00:06");
+    });
+
+
+    it("displays a pie chart", function() {
+      browser.pause(100);
+      browser.url("https://www.bbc.co.uk");
+      browser.pause(100)
+      browser.url(app_url);
+      browser.pause(100)
+      expect(browser.getText("#chart-container")).toContain("CanvasJS.com");
     });
 
   });
