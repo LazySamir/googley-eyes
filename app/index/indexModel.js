@@ -9,7 +9,7 @@
   }
 
   IndexModel.prototype.getPieData = function(parsedData) {
-    this.data = this.chartDataConverter.convertToPie(parsedData)
+    return this.chartDataConverter.convertToPie(parsedData)
   }
 
   IndexModel.prototype.queryLocalStorage = function() {

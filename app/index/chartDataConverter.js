@@ -16,6 +16,7 @@
   ChartDataConverter.prototype.convertToPie = function(data) {
     let pieData = []
     let totalDuration = 0
+    console.log(data);
     data.forEach(function(el) {
       totalDuration += el.duration
     })
