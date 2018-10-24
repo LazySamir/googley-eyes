@@ -2,7 +2,7 @@
 
 describe("Features Spec", function() {
 
-let app_url = 'chrome-extension://lhibnhgnknlgkeebajipkijniihoholg/index.html'
+let app_url = 'chrome-extension://kdojhoeljjgdjpenegonnkfgblmclffd/index.html'
 
   describe("Extension is loaded correctly", function() {
 

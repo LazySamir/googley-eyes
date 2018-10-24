@@ -3,7 +3,6 @@
 (function(exports) {
   function IndexModel(browser = chrome, urlParser = new UrlParser(), chartDataConverter = new ChartDataConverter()) {
     this.browser = browser;
-    console.log("constructor" + urlParser)
     this.urlParser = urlParser
     this.chartDataConverter = chartDataConverter
   }

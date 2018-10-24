@@ -9,14 +9,12 @@
     data.forEach(function(el) {
       columnData.push({ label: el.url, y: el.duration })
     })
-    console.log(columnData);
     return columnData
   };
 
   ChartDataConverter.prototype.convertToPie = function(data) {
     let pieData = []
     let totalDuration = 0
-    console.log(data);
     data.forEach(function(el) {
       totalDuration += el.duration
     })
