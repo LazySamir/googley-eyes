@@ -3,8 +3,8 @@
 (function(exports) {
   function IndexModel(browser = chrome, urlParser = new UrlParser()) {
     this.browser = browser;
-    console.log("constructor" + urlParser)
-    this.urlParser = urlParser
+    console.log("constructor " + urlParser)
+    this.urlParser = urlParser;
   }
 
   IndexModel.prototype.queryLocalStorage = function() {
@@ -37,5 +37,5 @@
     return i;
   }
 
-  exports.IndexModel = IndexModel
+  exports.IndexModel = IndexModel;
 })(this)
