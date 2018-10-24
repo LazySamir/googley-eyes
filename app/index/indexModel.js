@@ -1,14 +1,17 @@
+"use strict";
+
 (function(exports) {
-  function IndexModel(browser = chrome) {
-    this.browser = browser
+  function IndexModel(browser = chrome, urlParser = new UrlParser()) {
+    this.browser = browser;
+    this.urlParser = urlParser;
   }
 
   IndexModel.prototype.queryLocalStorage = function() {
-    this.browser.storage.sync.get(null, this.getData.bind(this)
-  )}
+    this.browser.storage.sync.get(null, this.getData.bind(this))
+  }
 
-  IndexModel.prototype.getData = function (data) {
-    this.data = data
+  IndexModel.prototype.getData = function(data) {
+    this.data = this.urlParser.mapAllData(data.allData)
   };
 
   IndexModel.prototype.convertDuration = function(milliseconds) {
@@ -33,5 +36,5 @@
     return i;
   }
 
-  exports.IndexModel = IndexModel
+  exports.IndexModel = IndexModel;
 })(this)
