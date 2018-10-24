@@ -26,7 +26,6 @@
   }
 
   function toPercentage(totalDuration, duration) {
-    // return  Math.round( ((duration / totalDuration) * 100) * 1e2 ) / 1e2;
     return  Math.round( (duration / totalDuration) * 1e2 );
   }
 
