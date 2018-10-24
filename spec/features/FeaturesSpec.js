@@ -2,7 +2,7 @@
 
 describe("Features Spec", function() {
 
-let app_url = 'chrome-extension://kgakamdmimaabfjmabfcldhgeebjgaej/index.html'
+let app_url = 'chrome-extension://daldbbjlfghpofhnokohphnibodahckg/index.html'
 
   describe("Extension is loaded correctly", function() {
 
@@ -16,12 +16,13 @@ let app_url = 'chrome-extension://kgakamdmimaabfjmabfcldhgeebjgaej/index.html'
   describe("Index View", function() {
 
     it("displays visited URLs", function() {
+      browser.pause(100);
       browser.url("https://www.bbc.co.uk");
       browser.pause(5000)
       browser.url(app_url);
       browser.pause(1000)
-      expect(browser.getText("#url-container")).toContain("https://www.bbc.co.uk");
-      expect(browser.getText("#url-container")).toContain("00:00:07");
+      expect(browser.getText("#url-container")).toContain("www.bbc.co.uk");
+      expect(browser.getText("#url-container")).toContain("00:00:06");
     });
 
   });
