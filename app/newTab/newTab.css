@@ -22,13 +22,6 @@ body {
 #second {  color: #8c8c8c; font-size: 80px; }
 #date { display: block; color: #999999; font-size: 20px; margin-top: 5px; }
 
-#welcome-message {
-  margin-top: 0;
-  margin-left: 0;
-  color: #999999;
-  font-size: 15px;
-}
-
 #latest-links {
   margin-top: 40px;
   margin-left: 60px;
@@ -64,6 +57,23 @@ a {
   color: #999999;
 }
 
+#time-online {
+  margin-left: 60px;
+  margin-top: 60px;
+}
+
+#time-title {
+  color: #999999;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#total-time {
+  margin-top: 0;
+  color: #8c8c8c;
+  font-size: 30px;
+}
+
 #googley-eyes-container {
   display: inline-block;
   position: absolute;
@@ -79,7 +89,6 @@ a {
   font-size: 15px;
   margin-right: 5px;
   display:inline-block;
-
 }
 
 #logo {
