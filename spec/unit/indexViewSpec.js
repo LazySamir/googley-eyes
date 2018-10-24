@@ -11,7 +11,7 @@ describe("IndexView", function() {
   describe(".getHTML()", function() {
 
     it("returns html string of data", function() {
-      expect(view.getHTML(data)).toEqual("<ul><li><div>www.bbc.co.uk: 00:00:05</div></li><li><div>www.facebook.com: 00:00:12</div></li></ul>")
+      expect(view.getHTML(data)).toEqual('<table id="domain-time-table"><tr><th>Domain</th><th>Time</th></tr><tr><td>www.bbc.co.uk</td><td>00:00:05</td></tr><tr><td>www.facebook.com</td><td>00:00:12</td></tr></table>')
     });
 
   });
