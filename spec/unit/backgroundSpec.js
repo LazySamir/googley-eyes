@@ -56,12 +56,6 @@ describe("background.js", function() {
         expect(chrome.storage.sync.set.calledOnce).toEqual(true);
       });
 
-      it("does not set data in chrome.storage if it is already saved", function() {
-        chrome.tabs.onUpdated.dispatch(1234, { "url": "test" });
-        expect(chrome.storage.sync.set.calledOnce).toEqual(true);
-        expect(chrome.storage.sync.set.calledTwice).toEqual(false);
-      });
-
     });
 
     afterEach(function() {
@@ -93,12 +87,6 @@ describe("background.js", function() {
 
       it("pushes updated data into chrome.storage", function() {
         expect(chrome.storage.sync.set.calledOnce).toEqual(true);
-      });
-
-      it("does not set data in chrome.storage if it is already saved", function() {
-        chrome.tabs.onActivated.dispatch(1234);
-        expect(chrome.storage.sync.set.calledOnce).toEqual(true);
-        expect(chrome.storage.sync.set.calledTwice).toEqual(false);
       });
 
     });

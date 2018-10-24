@@ -6,17 +6,20 @@
     <link rel="stylesheet" href="./index/index.css">
   </head>
   <body>
-    <h1>Googley Eyes</h1>
-    <div id="url_container"></div>
-
+    <p id="welcome-message">How you're spending your time:</h1>
+    <div id="info-container">
+      <div id="url-container"></div>
+      <div id="chart-container"></div>
+    </div>
     <div id="googley-eyes-container">
       <span id="team-name">googleyEyes</span>
       <img id="logo" src="./images/eyeslogo128.png"></img>
     </div>
 
-    <script src="./indexController.js"></script>
-    <script src="./indexModel.js"></script>
-    <script src="./indexView.js"></script>
-    <script src="./injectHTML.js"></script>
+    <script src="./index/indexController.js"></script>
+    <script src="./index/indexModel.js"></script>
+    <script src="./index/indexView.js"></script>
+    <script src="./index/urlParser.js"></script>
+    <script src="./index/injectHTML.js"></script>
   </body>
 </html>

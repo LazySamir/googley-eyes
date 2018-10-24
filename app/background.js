@@ -1,17 +1,40 @@
+var currentUrl = "test"
+var lastUpdatedTime = ""
+
 function handleUpdate(url) {
-  console.log(url);
   chrome.storage.sync.get({"allData": []}, function(result) {
-    console.log("data retrieved");
-    console.log(result.allData);
     let allDataArray = result.allData;
+    updateTime(allDataArray);
+    currentUrl = url;
     if (allDataArray.every(function(el) { return el.url !== url } )) {
-      allDataArray.push({ "url": url });
-      console.log("updated array");
-      console.log(allDataArray);
-      chrome.storage.sync.set({"allData": allDataArray});
+      allDataArray.push({ "url": url, "duration": 0 });
     };
+    chrome.storage.sync.set({"allData": allDataArray});
   });
 };
+
+function getTime() {
+  return new Date()
+}
+
+function duration(timeNow, lastUpdatedTime) {
+  return timeNow - lastUpdatedTime;
+}
+
+function updateTime(allDataArray) {
+  if (!lastUpdatedTime) {
+    lastUpdatedTime = getTime()
+  }
+  else {
+    var dur = duration(getTime(), lastUpdatedTime)
+    allDataArray.forEach(function(element) {
+      if (element.url === currentUrl) {
+        element.duration += dur
+      }
+    })
+    lastUpdatedTime = getTime()
+  }
+}
 
 chrome.browserAction.onClicked.addListener(function () {
   chrome.tabs.create({ url: chrome.runtime.getURL("index.html") });

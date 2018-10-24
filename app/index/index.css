@@ -1,6 +1,59 @@
 html {
   background: url('chrome-extension://__MSG_@@extension_id__/images/indexBackground.jpg') no-repeat center center fixed;
   background-size: cover;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Open Sans',sans-serif;
+}
+
+#welcome-message {
+  color: #737373;
+  font-size: 25px;
+  margin-top: 25px;
+  margin-left: 3%;
+  margin-bottom: 25px;
+}
+
+#info-container {
+  display: flex;
+  width: 100%;
+  height: 35%;
+}
+
+#url-container {
+  height: 100%;
+  width: 44%;
+  margin-left: 3%;
+  margin-right: 3%;
+  border: 1px solid #b3b3b3;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.8);
+  overflow: scroll;
+  box-shadow: 2px 2px 5px #b3b3b3;
+}
+
+#domain-time-table {
+  width: 100%;
+  text-align: left;
+  color: #737373;
+}
+
+tr:nth-child(even) {background-color: rgba(182, 188, 202, 0.5);}
+
+#chart-container {
+  height: 100%;
+  width: 44%;
+  margin-left: 3%;
+  margin-right: 3%;
+  border: 1px solid #b3b3b3;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.8);
+  overflow: scroll;
+  box-shadow: 2px 2px 5px #b3b3b3;
 }
 
 #googley-eyes-container {
@@ -14,7 +67,7 @@ html {
 #team-name {
   height: 100%;
   font-family: 'Open Sans',sans-serif;
-  color: #404040;
+  color: #737373;
   font-size: 15px;
   margin-right: 5px;
   display:inline-block;

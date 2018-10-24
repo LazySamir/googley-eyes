@@ -33,6 +33,7 @@
     "jasmine-console-reporter": "^3.1.0",
     "selenium-standalone": "^6.15.3",
     "sinon-chrome": "^2.3.2",
+    "url-parse": "^1.4.3",
     "wdio-allure-reporter": "^0.8.2",
     "wdio-jasmine-framework": "^0.3.6",
     "wdio-json-reporter": "^0.3.1",
