@@ -1,7 +1,8 @@
 (function(exports) {
 
-  function LatestLinks(container, browser = chrome) {
+  function LatestLinks(container, totalTime, browser = chrome) {
     this.container = container;
+    this.totalTime = totalTime;
     this.browser = browser;
   };
 
@@ -19,6 +20,7 @@
     };
     output += "</ul>";
     this.injectHTML(output);
+    this.injectTotalTime(latestUrls);
   }
 
   LatestLinks.prototype.first40Chars = function(url) {
@@ -30,6 +32,31 @@
 
   LatestLinks.prototype.injectHTML = function(output) {
     this.container.innerHTML = output;
+  }
+
+  LatestLinks.prototype.injectTotalTime = function(allData) {
+    // this.totalTime.innerHTML = allData (sum of durations)
+    let total = allData.reduce(function(acc, el) {
+      acc += el.duration;
+      return acc;
+    }, 0);
+    this.totalTime.innerHTML = convertDuration(total);
+  }
+
+  function convertDuration(milliseconds) {
+    var seconds = milliseconds /1000;
+    var hours = parseInt( seconds / 3600);
+    seconds = seconds % 3600;
+    var minutes = parseInt ( seconds / 60 );
+    return `${hours} hour${convertString(hours)} and ${minutes} minute${convertString(minutes)}`
+  }
+
+  function convertString(time) {
+    if (time !== 1) {
+      return "s";
+    } else {
+      return "";
+    }
   }
 
   exports.LatestLinks = LatestLinks;

@@ -29,6 +29,7 @@ function updateTime(allDataArray) {
   }
   else {
     var dur = duration(getTime(), lastUpdatedTime)
+    console.log("summing duration");
     allDataArray.forEach(function(element) {
       if (element.url === currentUrl) {
         element.duration += dur
@@ -41,6 +42,7 @@ function updateTime(allDataArray) {
 function clearStorage() {
   let date = new Date()
   if ( currentDate.getDate() !== date.getDate() ) {
+    console.log("chrome.storage.sync.clear");
     chrome.storage.sync.clear()
     currentDate = date
   }

@@ -36,10 +36,14 @@ describe("newTab", function() {
     let container = {
           innerHTML: {}
         };
-    let latestLinks = new L.LatestLinks(container, chrome);
+    let totalTime = {
+      innerHTML: {}
+    }
+    let latestLinks = new L.LatestLinks(container, totalTime, chrome);
     let result = {
           allData: []
         };
+    let allData = [ { url: "test", duration: 20000  }, { url: "test", duration: 20000  }, { url: "test", duration: 20000  } ];
 
     it("gets urls from local storage", function() {
       spyOn(latestLinks, 'convertToHTML');
@@ -58,6 +62,11 @@ describe("newTab", function() {
     it("injects string into DOM", function() {
       latestLinks.injectHTML("test");
       expect(container.innerHTML).toEqual("test")
+    });
+
+    it("injects total time into DOM", function() {
+      latestLinks.injectTotalTime(allData);
+      expect(totalTime.innerHTML).toEqual("0 hours and 1 minute");
     });
 
   });

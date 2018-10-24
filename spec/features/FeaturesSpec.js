@@ -2,7 +2,7 @@
 
 describe("Features Spec", function() {
 
-let app_url = 'chrome-extension://daldbbjlfghpofhnokohphnibodahckg/index.html'
+let app_url = 'chrome-extension://dfjglldhnemoebdjibmhjnkmdheemlki/index.html'
 
   describe("Extension is loaded correctly", function() {
 
@@ -33,6 +33,12 @@ let app_url = 'chrome-extension://daldbbjlfghpofhnokohphnibodahckg/index.html'
       browser.url("https://www.bbc.co.uk");
       browser.url("chrome://newtab/");
       expect(browser.getText("#links-container")).toContain("https://www.bbc.co.uk/");
+    });
+
+    it("displays total time online today", function() {
+      browser.pause(100);
+      browser.url("chrome://newtab/")
+      expect(browser.getText("#total-time")).toContain("0 hours and 0 minutes")
     });
 
   });
