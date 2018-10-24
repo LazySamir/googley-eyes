@@ -1,7 +1,9 @@
 var currentUrl = "test"
 var lastUpdatedTime = ""
+var currentDate = new Date("1990-06-11T03:24:00")
 
 function handleUpdate(url) {
+  clearStorage()
   chrome.storage.sync.get({"allData": []}, function(result) {
     let allDataArray = result.allData;
     updateTime(allDataArray);
@@ -33,6 +35,14 @@ function updateTime(allDataArray) {
       }
     })
     lastUpdatedTime = getTime()
+  }
+}
+
+function clearStorage() {
+  let date = new Date()
+  if ( currentDate.getDate() !== date.getDate() ) {
+    chrome.storage.sync.clear()
+    currentDate = date
   }
 }
 
