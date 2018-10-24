@@ -3,14 +3,12 @@
     this.model = model
   }
   IndexView.prototype.getHTML = function(data) {
-     var urlArray = data['allData']
-     var output = "<ul>"
-
-     for(var i = 0; i < urlArray.length; i++) {
-       output += `<li><div>${urlArray[i]['url']}: ${this.model.convertDuration(urlArray[i]['duration'])}</div></li>`
-     }
-     output += "</ul>"
-     return output
+    let output = '<table id="domain-time-table"><tr><th>Domain</th><th>Time</th></tr>'
+    for(let i = 0; i < data.length; i++) {
+     output += `<tr><td>${data[i]['url']}</td><td>${this.model.convertDuration(data[i]['duration'])}</td></tr>`
+    }
+    output += "</table>"
+    return output
   }
 
   exports.IndexView = IndexView

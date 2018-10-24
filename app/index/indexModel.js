@@ -1,7 +1,7 @@
 "use strict";
 
 (function(exports) {
-  function IndexModel(browser = chrome, urlParser, chartDataConverter) {
+  function IndexModel(browser = chrome, urlParser = new UrlParser(), chartDataConverter = new ChartDataConverter()) {
     this.browser = browser;
     console.log("constructor" + urlParser)
     this.urlParser = urlParser
@@ -17,7 +17,7 @@
   }
 
   IndexModel.prototype.getData = function(data) {
-    this.data = this.urlParser.mapAllData(data)
+    this.data = this.urlParser.mapAllData(data.allData)
   };
 
   IndexModel.prototype.convertDuration = function(milliseconds) {
@@ -42,5 +42,5 @@
     return i;
   }
 
-  exports.IndexModel = IndexModel
+  exports.IndexModel = IndexModel;
 })(this)

@@ -16,10 +16,10 @@ body {
   margin-left: 60px;
 }
 
-#hour { color: #737373; font-size: 80px; }
-#colon { color: #737373; font-size: 80px; margin-left: 2px; margin-right: 2px; }
-#minute {  color: #737373; font-size: 80px; }
-#second {  color: #737373; font-size: 80px; }
+#hour { color: #8c8c8c; font-size: 80px; }
+#colon { color: #8c8c8c; font-size: 80px; margin-left: 2px; margin-right: 2px; }
+#minute {  color: #8c8c8c; font-size: 80px; }
+#second {  color: #8c8c8c; font-size: 80px; }
 #date { display: block; color: #999999; font-size: 20px; margin-top: 5px; }
 
 #welcome-message {
@@ -36,7 +36,7 @@ body {
 }
 
 #link-title {
-  color: #737373;
+  color: #8c8c8c;
   font-size: 20px;
 }
 

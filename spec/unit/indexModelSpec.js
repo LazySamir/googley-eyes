@@ -1,3 +1,4 @@
+const urlParser = { mapAllData: function() {} };
 const IM = require('../../app/index/indexModel');
 const chrome = require("sinon-chrome")
 const UP = require("../../app/index/urlParser")

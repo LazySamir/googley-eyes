@@ -16,12 +16,6 @@ describe("IndexController", function() {
       expect(model.queryLocalStorage).toHaveBeenCalled();
     });
 
-    // it("invokes .mapAllData() on urlParser", function() {
-    //   spyOn(urlParser, "mapAllData");
-    //   controller.retrieveURLs(urlParser.mapAllData);
-    //   expect(urlParser.mapAllData).toHaveBeenCalledWith("urls");
-    // })
-
   });
 
   describe(".retrievePieData()", function() {
