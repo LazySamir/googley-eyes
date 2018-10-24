@@ -1,7 +1,7 @@
 "use strict";
 
 (function(exports) {
-  function IndexModel(browser = chrome, urlParser = new UrlParser()) {
+  function IndexModel(browser = chrome, urlParser) {
     this.browser = browser;
     console.log("constructor" + urlParser)
     this.urlParser = urlParser
