@@ -3,14 +3,14 @@
     this.model = model
   }
   IndexView.prototype.getHTML = function(data) {
-     var urlArray = data['allData']
-     var output = "<ul>"
-
-     for(var i = 0; i < urlArray.length; i++) {
-       output += `<li><div>${urlArray[i]['url']}: ${this.model.convertDuration(urlArray[i]['duration'])}</div></li>`
-     }
-     output += "</ul>"
-     return output
+    console.log("getHTML");
+    console.log(data);
+    let output = "<ul>"
+    for(let i = 0; i < data.length; i++) {
+     output += `<li><div>${data[i]['url']}: ${this.model.convertDuration(data[i]['duration'])}</div></li>`
+    }
+    output += "</ul>"
+    return output
   }
 
   exports.IndexView = IndexView

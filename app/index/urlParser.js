@@ -5,6 +5,8 @@
   function UrlParser(){};
 
   UrlParser.prototype.mapAllData = function(allData) {
+    console.log("mapAllData");
+    console.log(allData);
     let mappedData = allData.map( item => parseUrl(item));
     let reducedData = mappedData.reduce(reduceData, []);
     return reducedData;
