@@ -25,6 +25,16 @@ let app_url = 'chrome-extension://kdojhoeljjgdjpenegonnkfgblmclffd/index.html'
       expect(browser.getText("#url-container")).toContain("00:00:06");
     });
 
+
+    it("displays a pie chart", function() {
+      browser.pause(100);
+      browser.url("https://www.bbc.co.uk");
+      browser.pause(100)
+      browser.url(app_url);
+      browser.pause(100)
+      expect(browser.getText("#chart-container")).toContain("CanvasJS.com");
+    });
+
   });
 
   describe("New Tab View", function() {
