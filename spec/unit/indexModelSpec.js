@@ -1,9 +1,6 @@
 const urlParser = { mapAllData: function() {} };
-console.log("beginning of model spec " + urlParser);
 const IM = require('../../app/index/indexModel');
 const chrome = require("sinon-chrome")
-const UP = require("../../app/index/urlParser");
-
 const model = new IM.IndexModel(chrome, urlParser);
 
 describe("IndexModel", function() {

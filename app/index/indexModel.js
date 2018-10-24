@@ -3,20 +3,15 @@
 (function(exports) {
   function IndexModel(browser = chrome, urlParser = new UrlParser()) {
     this.browser = browser;
-    console.log("constructor " + urlParser)
     this.urlParser = urlParser;
   }
 
   IndexModel.prototype.queryLocalStorage = function() {
-    console.log("queryLocalStorage");
     this.browser.storage.sync.get(null, this.getData.bind(this))
   }
 
   IndexModel.prototype.getData = function(data) {
-    console.log("getData");
     this.data = this.urlParser.mapAllData(data.allData)
-    console.log("mapped data, model.data:");
-    console.log(this.data);
   };
 
   IndexModel.prototype.convertDuration = function(milliseconds) {
