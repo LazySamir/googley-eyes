@@ -18,8 +18,8 @@
 
   IndexController.prototype.injectHTML = function(urlContainer, chartContainer) {
     urlContainer.innerHTML = this.view.getHTML(this.data);
-    chartContainer.innerHTML = this.view.displayPie(this.pieData);
-  };
+    chartContainer.innerHTML = this.pieData;
+  }
 
   exports.IndexController = IndexController;
 })(this);

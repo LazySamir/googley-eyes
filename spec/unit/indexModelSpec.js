@@ -1,9 +1,9 @@
-const urlParser = { mapAllData: function() {} };
+const urlParser = { mapAllData: "" };
 const IM = require('../../app/index/indexModel');
 const chrome = require("sinon-chrome")
 const UP = require("../../app/index/urlParser")
 const CDC = require("../../app/index/chartDataConverter")
-const chartDataConverter = { convertToPie: function() {} };
+const chartDataConverter = { convertToPie: ""};
 
 const model = new IM.IndexModel(chrome, urlParser, chartDataConverter);
 

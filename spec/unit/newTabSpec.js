@@ -44,6 +44,7 @@ describe("newTab", function() {
           allData: []
         };
     let allData = [ { url: "test", duration: 20000  }, { url: "test", duration: 20000  }, { url: "test", duration: 20000  } ];
+    let tooMuchData = { allData: [ { url: "test", duration: 20000  }, { url: "test", duration: 20000  }, { url: "test", duration: 20000  }, { url: "test", duration: 20000  }, { url: "test", duration: 20000  }, { url: "test", duration: 20000  } ]};
 
     it("gets urls from local storage", function() {
       spyOn(latestLinks, 'convertToHTML');
@@ -58,6 +59,12 @@ describe("newTab", function() {
       latestLinks.convertToHTML(result);
       expect(latestLinks.injectHTML).toHaveBeenCalledWith('<ul><li><a href="this_is_a_test_to_check_for_a_long_pretty_print">this_is_a_test_to_check_for_a_long_pr...</a></li></ul>')
     });
+
+    it("converts only first 5 urls", function() {
+      spyOn(latestLinks, 'injectHTML');
+      latestLinks.convertToHTML(tooMuchData);
+      expect(latestLinks.injectHTML).toHaveBeenCalledWith('<ul><li><a href="test">test</a></li><li><a href="test">test</a></li><li><a href="test">test</a></li><li><a href="test">test</a></li><li><a href="test">test</a></li></ul>')
+    })
 
     it("injects string into DOM", function() {
       latestLinks.injectHTML("test");
