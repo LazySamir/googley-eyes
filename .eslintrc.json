@@ -20,11 +20,23 @@
         ],
         "quotes": [
             "error",
-            "double"
+            "double",
+            { "avoidEscape": true }
         ],
         "semi": [
             "error",
             "always"
         ]
+    },
+    "globals": {
+      "IndexModel": true,
+      "IndexView": true,
+      "IndexController": true,
+      "UrlParser": true,
+      "ChartDataConverter": true,
+      "Clock": true,
+      "LatestLinks": true,
+      "CanvasJS": true,
+      "chrome": true
     }
 }

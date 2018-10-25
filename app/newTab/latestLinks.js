@@ -35,7 +35,6 @@
   }
 
   LatestLinks.prototype.injectTotalTime = function(allData) {
-    // this.totalTime.innerHTML = allData (sum of durations)
     let total = allData.reduce(function(acc, el) {
       acc += el.duration;
       return acc;
