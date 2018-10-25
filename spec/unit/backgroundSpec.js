@@ -40,6 +40,12 @@ describe("background.js", function() {
       expect(chrome.storage.sync.get.called).toEqual(false);
     });
 
+    it("does not invoke chrome.storage.sync if newtab", function() {
+      vm.runInNewContext(code, context);
+      chrome.tabs.onUpdated.dispatch(1234, { url: "chrome://newtab/" });
+      expect(chrome.storage.sync.get.called).toEqual(false);
+    });
+
     describe("invokes handleUpdate() if there is a change in url", function() {
 
       beforeEach(function() {
