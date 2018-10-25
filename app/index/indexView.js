@@ -11,9 +11,5 @@
     return output
   }
 
-  IndexView.prototype.displayPie = function(pieData) {
-    return pieData;
-  }
-
   exports.IndexView = IndexView
 })(this)

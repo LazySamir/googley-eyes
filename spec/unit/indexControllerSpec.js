@@ -3,8 +3,7 @@
 const IC = require('../../app/index/indexController');
 const model = { queryLocalStorage: function(){ return { allData: "urls" }},
                getPieData: function() {return { allData: "newUrls" }} };
-const view = { getHTML: function(){},
-               displayPie: function(){}};
+const view = { getHTML: function(){}};
 const controller = new IC.IndexController(model, view)
 
 describe("IndexController", function() {
@@ -35,12 +34,6 @@ describe("IndexController", function() {
       spyOn(view, "getHTML");
       controller.injectHTML(url_container, chart_container);
       expect(view.getHTML).toHaveBeenCalledWith(controller.data);
-    });
-
-    it("invokes .displayPie() on indexView", function() {
-      spyOn(view, "displayPie");
-      controller.injectHTML(url_container, chart_container);
-      expect(view.displayPie).toHaveBeenCalledWith(controller.pieData);
     });
 
   });
