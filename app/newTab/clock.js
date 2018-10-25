@@ -1,5 +1,7 @@
+"use strict";
+
 (function(exports) {
-  function Clock() {};
+  function Clock() {}
 
   Clock.prototype.getNewTime = function() {
     let date = new Date();
@@ -11,7 +13,7 @@
 
   Clock.prototype.addZero = function(i) {
     if (i < 10) {
-        i = "0" + i;
+      i = "0" + i;
     }
     return i;
   };

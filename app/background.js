@@ -1,6 +1,8 @@
-var currentUrl = "test"
-var lastUpdatedTime = ""
-var currentDate = new Date("1990-06-11T03:24:00")
+/* global chrome  */
+
+var currentUrl = "test";
+var lastUpdatedTime = "";
+var currentDate = new Date("1990-06-11T03:24:00");
 
 function handleUpdate(url) {
   clearStorage()
@@ -18,7 +20,7 @@ function handleUpdate(url) {
 };
 
 function getTime() {
-  return new Date()
+  return new Date();
 }
 
 function duration(timeNow, lastUpdatedTime) {
@@ -28,24 +30,23 @@ function duration(timeNow, lastUpdatedTime) {
 function updateTime(allDataArray) {
   if (!lastUpdatedTime) {
     lastUpdatedTime = getTime()
-  }
-  else {
-    var dur = duration(getTime(), lastUpdatedTime)
+  } else {
+    var dur = duration(getTime(), lastUpdatedTime);
     allDataArray.forEach(function(element) {
       if (element.url === currentUrl) {
-        element.duration += dur
+        element.duration += dur;
       }
     })
-    lastUpdatedTime = getTime()
-  }
+    lastUpdatedTime = getTime();
+  };
 }
 
 function clearStorage() {
   let date = new Date()
   if ( currentDate.getDate() !== date.getDate() ) {
-    chrome.storage.sync.clear()
-    currentDate = date
-  }
+    chrome.storage.sync.clear();
+    currentDate = date;
+  };
 }
 
 chrome.browserAction.onClicked.addListener(function () {
