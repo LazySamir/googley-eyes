@@ -1,22 +1,25 @@
+/* exported UrlParser, ChartDataConverter */
+/* global chrome */
+
 "use strict";
 
 (function(exports) {
   function IndexModel(browser = chrome, urlParser = new UrlParser(), chartDataConverter = new ChartDataConverter()) {
     this.browser = browser;
-    this.urlParser = urlParser
-    this.chartDataConverter = chartDataConverter
+    this.urlParser = urlParser;
+    this.chartDataConverter = chartDataConverter;
   }
 
   IndexModel.prototype.getPieData = function(parsedData) {
-    return this.chartDataConverter.convertToPie(parsedData)
-  }
+    return this.chartDataConverter.convertToPie(parsedData);
+  };
 
   IndexModel.prototype.queryLocalStorage = function() {
-    this.browser.storage.sync.get(null, this.getData.bind(this))
-  }
+    this.browser.storage.sync.get(null, this.getData.bind(this));
+  };
 
   IndexModel.prototype.getData = function(data) {
-    this.data = this.urlParser.mapAllData(data.allData)
+    this.data = this.urlParser.mapAllData(data.allData);
   };
 
   IndexModel.prototype.convertDuration = function(milliseconds) {
@@ -31,15 +34,15 @@
     minutes = this.addZero(minutes);
     seconds = this.addZero(seconds);
 
-    return `${hours}:${minutes}:${seconds}`
-  }
+    return `${hours}:${minutes}:${seconds}`;
+  };
 
   IndexModel.prototype.addZero = function(i) {
     if (i < 10) {
-        i = "0" + i;
+      i = "0" + i;
     }
     return i;
-  }
+  };
 
   exports.IndexModel = IndexModel;
-})(this)
+})(this);
