@@ -4,15 +4,17 @@ var currentDate = new Date("1990-06-11T03:24:00")
 
 function handleUpdate(url) {
   clearStorage()
-  chrome.storage.sync.get({"allData": []}, function(result) {
-    let allDataArray = result.allData;
-    updateTime(allDataArray);
-    currentUrl = url;
-    if (allDataArray.every(function(el) { return el.url !== url } )) {
-      allDataArray.push({ "url": url, "duration": 0 });
-    };
-    chrome.storage.sync.set({"allData": allDataArray});
-  });
+  if (url !== "chrome://newtab/" && url !== (chrome.runtime.getURL("index.html"))) {
+    chrome.storage.sync.get({"allData": []}, function(result) {
+      let allDataArray = result.allData;
+      updateTime(allDataArray);
+      currentUrl = url;
+      if (allDataArray.every(function(el) { return el.url !== url } )) {
+        allDataArray.push({ "url": url, "duration": 0 });
+      };
+      chrome.storage.sync.set({"allData": allDataArray});
+    });
+  }
 };
 
 function getTime() {
@@ -29,7 +31,6 @@ function updateTime(allDataArray) {
   }
   else {
     var dur = duration(getTime(), lastUpdatedTime)
-    console.log("summing duration");
     allDataArray.forEach(function(element) {
       if (element.url === currentUrl) {
         element.duration += dur
@@ -42,7 +43,6 @@ function updateTime(allDataArray) {
 function clearStorage() {
   let date = new Date()
   if ( currentDate.getDate() !== date.getDate() ) {
-    console.log("chrome.storage.sync.clear");
     chrome.storage.sync.clear()
     currentDate = date
   }
