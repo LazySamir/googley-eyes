@@ -13,43 +13,50 @@ Googley Eyes is a chrome extension that monitors your browser activity and prese
 
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/LazySamir/googley-eyes.svg?columns=all)](https://waffle.io/LazySamir/googley-eyes)
 
-<<<<<<< HEAD
 ## How do I run it?
-=======
->>>>>>> master
 
 ##### Download the app
 ```
 $ git clone git@github.com:LazySamir/googley-eyes.git
 $ cd googley-eyes
 ```
-#### Add extension to chrome from the repository
+#### Add extension to chrome from this repository
 Visit: chrome://extensions/
 Click 'Load unpacked'
 Navigate to and select the 'googley-eyes/app' directory
 
-#### Add the extension to chrome from chrome store
+#### You can also add the extension to chrome from chrome store
 Visit: https://chrome.google.com/webstore/detail/googley-eyes/pmmhkfmjlmfafdbmncichafmcchedefb
 
 Click 'Add to Chrome'
 
 
 ### How do I use it?
-Click Extension Icon to open a new googley-eyes analytics page
 
-[Image of extension icon]
-[Image of example analytics page]
+Open a new browser tab to see your recent history, the current time and date and the amount of time you have spent online today:
+![Imgur](https://i.imgur.com/Cj7qmvH.png)
 
-Open a new browser tab to see your recent history.
+Click Extension Icon to open a new googley-eyes analytics page:
 
-[Image of example new tab page]
+![Imgur](https://i.imgur.com/8yQrdcz.png)
+Googley Eyes extension icon
 
+The following page will show you the amount of time today you have spent on different domains. This is done so descriptively in a table and graphically via a pie chart. Click a segment of the chart to animate it.
+![Imgur](https://i.imgur.com/Tk3fUBR.png)
 
 ### How do I run the tests?
 
-To run the unit tests you will need Node.js installed on your local machine. After cloning the project run `npm install` to make sure all dependencies are also installed.
+To run the unit tests you will need Node.js installed on your local machine. After cloning the project run `$ npm install` to make sure all dependencies are also installed. Feature testing is compatible with Java8.
 
-The unit tests are run using Node-based Jasmine, to run them call `npm test`.
+To install Java 8 with homebrew:
+1. `$ brew cask uninstall java`
+2. `$ brew tap caskroom/versions`
+3. `$ brew cask install java8`.
+
+The unit tests are run using Node-based Jasmine, to run them call `$ npm test`.
+
+The feature tests are run in conjunction with Selenium WebdriverIO simulates user activity by automating web browsing. Run feature tests by calling `$ npm run test-features`
+
 
 The coverage of the unit tests will be shown in the console after running the tests (coverage is provided by the `Istanbul` package).
 
@@ -60,6 +67,18 @@ The coverage of the unit tests will be shown in the console after running the te
 As a Google Chrome user,
 So that I can manage my time,
 I want to be able to see what sites I have visited and how long I've spend on each one
+
+As a Google Chrome user,
+So I know where I've spent every second of my active time online,
+I would like to see a table showing my time online
+
+As a Google Chrome user,
+So I can quickly and easily see where my time has been spent,
+I would like to see a graphical representation of my time spent on domains
+
+As a Google Chrome user,
+So I am reminded to be productive today,
+I would like to be taken to a Googley Eyes overview page when I create a new tab
 
 As a Google Chrome user,
 So that I can know my browser history is safe,
@@ -124,29 +143,3 @@ Browser
                                        ╚════════════╝
 
 ```
-
-## Approach
-
-To start, we split into two teams, one to figure out and set up testing frameworks suitable for chrome extensions
-and the other working out a suitable way to access browser details required for the extensions features.
-
-#### Testing:
-
-1. A node-based version of Jasmine was set up to manage unit tests. This allows us to run all tests from our node environment.
-
-2. Travis(CI), Instanbul(Code Coverage) and Eslint(Linter) were set up and configured to ensure consistently high code quality.
-
-3. We decided to use an automated web browser for feature testing (Selenium). Configuration of Selenium was difficult and took longer than expected to resolve. Most resources available for Selenium chrome driver were not applicable in Javascript. A third person was added to the testing team to resolve this blocker. We resolved the configuration issues first in Java (just to get it working). Later we used webdriver.io that had preconfigured the selenium server that allowed us to continue in Javascript.
-
-#### The spike:
-
-1. Initially we researched how to access the history stored on a chrome browser as we believed this would fit our needs.
-After some investigation we realised that although this would allow us access to user sites visited, we would be
-unable to accurately determine user time spent on each site. i.e. if a user did not click on a link once on a site, it would record the duration as 0.
-
-2. To resolve this issue, we decided to use the chrome extension to record site visits and duration and store these via the google.storage API. This would then be retrieved from storage and presented on the extensions main page.
-- We decided to store and present sites visited before attempting to record user site duration.
-- We first added dummy text to the app homepage (accessed by clicking the extension icon) to ensure we had an chrome
-extension skeleton to build upon.
-
-3. All code for these spikes were deleted. All code was rebuilt using TDD processes.
