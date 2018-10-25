@@ -1,5 +1,7 @@
+"use strict";
+
 (function(exports) {
-  function Clock() {};
+  function Clock() {}
 
   Clock.prototype.getNewTime = function() {
     let date = new Date();
@@ -11,16 +13,16 @@
 
   Clock.prototype.addZero = function(i) {
     if (i < 10) {
-        i = "0" + i;
+      i = "0" + i;
     }
     return i;
   };
 
   Clock.prototype.getNewDate = function() {
     let date = new Date();
-    let options = { weekday: "long", year: "numeric", month: "long", day: "numeric"}
-    return date.toLocaleDateString('en-GB', options);
-  }
+    let options = { weekday: "long", year: "numeric", month: "long", day: "numeric"};
+    return date.toLocaleDateString("en-GB", options);
+  };
 
   exports.Clock = Clock;
 })(this);

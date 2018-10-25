@@ -1,3 +1,5 @@
+/* exported Clock, LatestLinks */
+
 let clock = new Clock();
 let minute = document.getElementById("minute");
 let hour = document.getElementById("hour");
