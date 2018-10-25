@@ -1,8 +1,9 @@
 const IV = require('../../app/index/indexView');
 const IM = require('../../app/index/indexModel');
 const chrome = require('sinon-chrome')
-const urlParser = { mapAllData: function() {} };
-const model = new IM.IndexModel(chrome, urlParser);
+const urlParser = { mapAllData: ""};
+const chartDataConverter = { convertToPie: ""};
+const model = new IM.IndexModel(chrome, urlParser, chartDataConverter);
 const data = [{'url': "www.bbc.co.uk", 'duration': 5000}, {'url': "www.facebook.com", 'duration': 12900}]
 const view = new IV.IndexView(model)
 

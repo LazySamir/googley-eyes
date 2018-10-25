@@ -1,15 +1,19 @@
+/* exported IndexModel */
+
+"use strict";
+
 (function(exports) {
   function IndexView(model = new IndexModel()) {
-    this.model = model
+    this.model = model;
   }
   IndexView.prototype.getHTML = function(data) {
-    let output = '<table id="domain-time-table"><tr><th>Domain</th><th>Time</th></tr>'
+    let output = '<table id="domain-time-table"><tr><th>Domain</th><th>Time</th></tr>';
     for(let i = 0; i < data.length; i++) {
-     output += `<tr><td>${data[i]['url']}</td><td>${this.model.convertDuration(data[i]['duration'])}</td></tr>`
+      output += `<tr><td>${data[i]["url"]}</td><td>${this.model.convertDuration(data[i]["duration"])}</td></tr>`;
     }
-    output += "</table>"
-    return output
-  }
+    output += "</table>";
+    return output;
+  };
 
   exports.IndexView = IndexView
 })(this)

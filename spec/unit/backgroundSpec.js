@@ -40,6 +40,12 @@ describe("background.js", function() {
       expect(chrome.storage.sync.get.called).toEqual(false);
     });
 
+    it("does not invoke chrome.storage.sync if newtab", function() {
+      vm.runInNewContext(code, context);
+      chrome.tabs.onUpdated.dispatch(1234, { url: "chrome://newtab/" });
+      expect(chrome.storage.sync.get.called).toEqual(false);
+    });
+
     describe("invokes handleUpdate() if there is a change in url", function() {
 
       beforeEach(function() {
@@ -81,7 +87,6 @@ describe("background.js", function() {
       })
 
       it("gets all data from chrome.storage", function() {
-
         expect(chrome.storage.sync.get.calledOnce).toEqual(true);
       });
 
@@ -97,4 +102,28 @@ describe("background.js", function() {
 
   });
 
+  describe("clearStorage()", function() {
+
+    beforeEach(function() {
+      chrome.storage.sync.get.yields({ allData: [] });
+      chrome.tabs.get.yields({"url": "test"})
+      vm.runInNewContext(code, context);
+      chrome.tabs.onActivated.dispatch({});
+    });
+
+    it("invokes chrome.storage.sync.clear if dates don't match", function() {
+      expect(chrome.storage.sync.clear.called).toEqual(true)
+    })
+
+    it("does not invokes chrome.storage.sync.clear if date do match", function() {
+      chrome.tabs.onActivated.dispatch({});
+      expect(chrome.storage.sync.clear.calledTwice).toEqual(false)
+    })
+
+
+    afterEach(function() {
+      chrome.flush();
+    });
+
+  })
 });

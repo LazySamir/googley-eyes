@@ -36,10 +36,15 @@ describe("newTab", function() {
     let container = {
           innerHTML: {}
         };
-    let latestLinks = new L.LatestLinks(container, chrome);
+    let totalTime = {
+      innerHTML: {}
+    }
+    let latestLinks = new L.LatestLinks(container, totalTime, chrome);
     let result = {
           allData: []
         };
+    let allData = [ { url: "test", duration: 20000  }, { url: "test", duration: 20000  }, { url: "test", duration: 20000  } ];
+    let tooMuchData = { allData: [ { url: "test", duration: 20000  }, { url: "test", duration: 20000  }, { url: "test", duration: 20000  }, { url: "test", duration: 20000  }, { url: "test", duration: 20000  }, { url: "test", duration: 20000  } ]};
 
     it("gets urls from local storage", function() {
       spyOn(latestLinks, 'convertToHTML');
@@ -55,9 +60,20 @@ describe("newTab", function() {
       expect(latestLinks.injectHTML).toHaveBeenCalledWith('<ul><li><a href="this_is_a_test_to_check_for_a_long_pretty_print">this_is_a_test_to_check_for_a_long_pr...</a></li></ul>')
     });
 
+    it("converts only first 5 urls", function() {
+      spyOn(latestLinks, 'injectHTML');
+      latestLinks.convertToHTML(tooMuchData);
+      expect(latestLinks.injectHTML).toHaveBeenCalledWith('<ul><li><a href="test">test</a></li><li><a href="test">test</a></li><li><a href="test">test</a></li><li><a href="test">test</a></li><li><a href="test">test</a></li></ul>')
+    })
+
     it("injects string into DOM", function() {
       latestLinks.injectHTML("test");
       expect(container.innerHTML).toEqual("test")
+    });
+
+    it("injects total time into DOM", function() {
+      latestLinks.injectTotalTime(allData);
+      expect(totalTime.innerHTML).toEqual("0 hours and 1 minute");
     });
 
   });
